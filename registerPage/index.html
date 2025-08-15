@@ -1,0 +1,53 @@
+<div class="w-100 d-flex justify-content-center align-items-center">
+  <div class="authCard">
+    <div class="authCardHeader">
+      <h2 class="text-center">Register</h2>
+    </div>
+    <form id="registerForm" class="authForm">
+      <div class="formGroup">
+        <label for="username">Username:</label>
+        <input
+          class="textInput"
+          type="text"
+          id="username"
+          name="username"
+          required
+        />
+      </div>
+      <div class="formGroup">
+        <label for="email">Email:</label>
+        <input class="textInput" type="text" id="email" name="email" required />
+      </div>
+      <div class="formGroup">
+        <label for="password">Password:</label>
+        <input
+          class="textInput"
+          type="password"
+          id="password"
+          name="password"
+          minlength="6"
+          required
+        />
+      </div>
+      <div class="formGroup">
+        <label for="rePassword">Repeat Password:</label>
+        <input
+          class="textInput"
+          type="password"
+          id="rePassword"
+          name="rePassword"
+          minlength="6"
+          required
+        />
+      </div>
+      <button
+        type="submit"
+        id="registerBttn"
+        class="bttn my-1"
+        onclick="register()"
+      >
+        Register
+      </button>
+    </form>
+  </div>
+</div>
