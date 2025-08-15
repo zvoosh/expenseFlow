@@ -11,18 +11,19 @@
     <link rel="stylesheet" href="styles/header.css" />
     <link rel="stylesheet" href="styles/spaces.css" />
     <link rel="stylesheet" href="styles/login.css" />
+    <link rel="stylesheet" href="styles/flexbos.css" />
+    <link rel="stylesheet" href="styles/expense.css" />
   </head>
   <body>
     <div class="wrapper nata-sans">
         <header>
             <div class="header-content">
                 <h1 class="px-1 text-white font-14">Expense Flow</h1>
-                <nav class="px-1">
-                <a href="/index.html" class="header-nav">Home</a>
-                <a href="/expensePage/index.html" class="header-nav">Expenses</a>
-                <a href="/incomePage/index.html" class="header-nav">Income</a>
-                <a href="/historyPage/index.html" class="header-nav">History</a>
-                <a href="/userPage/index.html" class="header-nav">User</a>
+                <nav class="px-1 d-flex ">
+                <div onclick="loadPage('/expensePage/index.html')" class="header-nav">Expenses</div>
+                <div onclick="loadPage('/incomePage/index.html')"  class="header-nav">Income</div>
+                <div onclick="loadPage('/historyPage/index.html')"  class="header-nav">History</div>
+                <div onclick="loadPage('/userPage/index.html')"  class="header-nav">User</div>
                 </nav>
                 <div class="px-1">
                 <button class="bttn" id="headerAuthBttn">Register</button>
@@ -30,40 +31,9 @@
             </div>
         </header>
         <main>
-            <div id="content" class="content-wrapper">
-                <div class="w-100 d-flex justify-content-center align-items-center">
-                    <div class="authCard">
-                        <div class="authCardHeader">
-                            <h2 class="text-center">Login</h2>
-                        </div>
-                        <form id="loginForm" class="authForm">
-                            <div class="formGroup">
-                                <label for="username">Username:</label>
-                                <input
-                                class="textInput"
-                                type="text"
-                                id="username"
-                                name="username"
-                                required
-                                />
-                            </div>
-                            <div class="formGroup">
-                                <label for="password">Password:</label>
-                                <input
-                                class="textInput"
-                                type="password"
-                                id="password"
-                                name="password"
-                                minlength="6"
-                                required
-                                />
-                            </div>
-                            <button type="submit" id="loginBttn" class="bttn my-1" onclick="login()">Login</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
+            <div id="content" class="content-wrapper"> </div>
         </main>
     </div>
     <script src="script.js"></script>
+    <script src="expensePage/script.js"></script>
 </html>

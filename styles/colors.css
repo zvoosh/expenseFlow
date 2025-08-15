@@ -8,3 +8,9 @@
 .text-gray {
   color: gray;
 }
+.text-center{
+  text-align: center;
+}
+.bg-white{
+  background-color: #D9D9D9;
+}

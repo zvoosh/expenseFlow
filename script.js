@@ -1,48 +1,23 @@
+function loadPage(page) {
+  fetch(`${page}`)
+    .then((res) => res.text())
+    .then((html) => {
+      localStorage.setItem("currentPage", page);
+      document.getElementById("content").innerHTML = html;
+    })
+    .catch((err) => console.error(`Failed to load: ${page} `, err));
+}
+
 document.getElementById("headerAuthBttn").addEventListener("click", () => {
   const bttnTextContent = document.getElementById("headerAuthBttn").innerHTML;
   if (bttnTextContent == "Register") {
-    fetch("/registerPage/index.html")
-      .then((res) => res.text())
-      .then((data) => {
-        document.getElementById("headerAuthBttn").innerHTML = "Login";
-        document.getElementById("content").innerHTML = data;
-      })
-      .catch((err) => console.error("Failed to load header:", err));
+    document.getElementById("headerAuthBttn").innerHTML = "Login";
+    localStorage.setItem("currentPage", "/registerPage/index.html");
+    loadPage("/registerPage/index.html");
   } else {
     document.getElementById("headerAuthBttn").innerHTML = "Register";
-    document.getElementById(
-      "content"
-    ).innerHTML = `<div class="w-100 d-flex justify-content-center align-items-center">
-                    <div class="authCard">
-                    <div class="authCardHeader">
-                    <h2 class="text-center">Login</h2>
-                    </div>
-                    <form id="loginForm" class="authForm">
-                    <div class="formGroup">
-                    <label for="username">Username:</label>
-                    <input
-                    class="textInput"
-                    type="text"
-                    id="username"
-                    name="username"
-                    required
-                    />
-                    </div>
-                    <div class="formGroup">
-                    <label for="password">Password:</label>
-                    <input
-                    class="textInput"
-                    type="password"
-                    id="password"
-                    name="password"
-                    minlength="6"
-                    required
-                    />
-                    </div>
-                    <button type="submit" class="bttn my-1" onclick="login()">Login</button>
-                    </form>
-                    </div>
-                    </div>`;
+    localStorage.setItem("currentPage", "/loginPage/index.html");
+    loadPage("/loginPage/index.html");
   }
 });
 
@@ -53,39 +28,8 @@ function register() {
     const data = Object.fromEntries(formData.entries());
     localStorage.setItem("userData", JSON.stringify(data));
     document.getElementById("headerAuthBttn").innerHTML = "Login";
-    document.getElementById(
-      "content"
-    ).innerHTML = `<div class="w-100 d-flex justify-content-center align-items-center">
-    <div class="authCard">
-    <div class="authCardHeader">
-    <h2 class="text-center">Login</h2>
-    </div>
-    <form id="loginForm" class="authForm">
-    <div class="formGroup">
-    <label for="username">Username:</label>
-    <input
-    class="textInput"
-    type="text"
-    id="username"
-    name="username"
-                                required
-                                />
-                                </div>
-                                <div class="formGroup">
-                                <label for="password">Password:</label>
-                                <input
-                                class="textInput"
-                                type="password"
-                                id="password"
-                                name="password"
-                                minlength="6"
-                                required
-                                />
-                                </div>
-                                <button type="submit" class="bttn my-1" onclick="login()">Login</button>
-                                </form>
-                                </div>
-                                </div>`;
+    localStorage.setItem("currentPage", "/loginPage/index.html");
+    loadPage("/loginPage/index.html");
   });
 }
 function login() {
@@ -94,22 +38,25 @@ function login() {
     const formData = new FormData(e.target);
     const data = Object.fromEntries(formData.entries());
     const userData = JSON.parse(localStorage.getItem("userData"));
-
     if (
       userData &&
       userData.username === data.username &&
       userData.password === data.password
     ) {
-      fetch("/expensePage/index.html")
-        .then((res) => res.text())
-        .then((data) => {
-          document.getElementById("headerAuthBttn").innerHTML = "Logout";
-          document.getElementById("content").innerHTML = data;
-        })
-        .catch((err) => console.error("Failed to load header:", err));
+      document.getElementById("headerAuthBttn").innerHTML = "Logout";
+      localStorage.setItem("currentPage", "/expensePage/index.html");
+      loadPage("/expensePage/index.html");
     } else {
       alert("Invalid username or password");
       return;
     }
   });
 }
+
+window.addEventListener("DOMContentLoaded", () => {
+  const page = localStorage.getItem("currentPage") || "/loginPage/index.html";
+  loadPage(page);
+  if (page !== "/loginPage/index.html" || page !== "/registerPage/index.html") {
+    document.getElementById("headerAuthBttn").innerHTML = "Logout";
+  }
+});

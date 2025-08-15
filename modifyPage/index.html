@@ -1,0 +1,78 @@
+<div class="w-100 h-100 d-flex justify-content-center align-items-center text-white" id="modifyPage">
+  <div class="p-1 d-flex justify-content-center align-items-center">
+    <form
+      id="modifyExpenseForm"
+      class="mt-2 bg-white p-5 text-black d-flex flex-column align-items-center justify-content-center"
+    >
+      <h2 class="mb-2">Create a new expense</h2>
+      <div class="formGroup">
+        <label for="expenseName">Expense Name:</label>
+        <input
+          class="textInput"
+          type="text"
+          id="expenseName"
+          name="expenseName"
+          required
+        />
+      </div>
+      <div class="formGroup">
+        <label for="expenseDate">Date:</label>
+        <input
+          class="textInput"
+          type="date"
+          id="expenseDate"
+          name="expenseDate"
+          required
+        />
+      </div>
+      <div class="formGroup">
+        <label for="expenseCategory">Category:</label>
+        <input
+          class="textInput"
+          type="text"
+          id="expenseCategory"
+          name="expenseCategory"
+          required
+        />
+      </div>
+      <div class="formGroup">
+        <label for="expenseAmount">Amount:</label>
+        <input
+          class="textInput"
+          type="number"
+          id="expenseAmount"
+          name="expenseAmount"
+          required
+          min="0"
+        />
+      </div>
+      <div class="formGroup">
+        <label for="expenseCost">Cost:</label>
+        <input
+          class="textInput"
+          type="number"
+          id="expenseCost"
+          name="expenseCost"
+          required
+          min="0"
+        />
+      </div>
+      <div class="formGroup">
+        <label for="expenseDescription">Description:</label>
+        <textarea
+          class="textInput"
+          id="expenseDescription"
+          name="expenseDescription"
+        ></textarea>
+      </div>
+      <button
+        type="submit"
+        id="modifyBttn"
+        class="bttn my-1 self-right mr-1"
+        onclick="modifyExpense()"
+      >
+        Create Expense
+      </button>
+    </form>
+  </div>
+</div>

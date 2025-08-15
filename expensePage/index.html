@@ -1,11 +1,35 @@
-<div>
-  <div>
-    <div>
-      <div>Expense Table</div>
-      <div>Add new expense</div>
+<div class="w-100 h-100 text-white" id="expensePage">
+  <div class="w-100 pt-2">
+    <div class="w-100 d-flex justify-content-space-between">
+      <div class="table-heading">Expense Table</div>
+      <div
+        class="add-expense-btn"
+        onclick="loadPage('/modifyPage/index.html')"
+      >
+        + Add new expense
+      </div>
     </div>
     <!-- Expense Table -->
-    <div></div>
-    <div>page</div>
+    <div class="px-2">
+      <table class="w-100 table mt-2">
+        <thead>
+          <tr class="table-row">
+            <th class="table-cell">Expense</th>
+            <th class="table-cell">Date</th>
+            <th class="table-cell">Category</th>
+            <th class="table-cell">Amount</th>
+            <th class="table-cell">Cost</th>
+            <th class="table-cell">Description</th>
+            <th class="table-cell">Actions</th>
+          </tr>
+        </thead>
+        <tbody id="expenseTableBody">
+          <!-- Expense rows will be dynamically inserted here -->
+        </tbody>
+      </table>
+    </div>
+    <div class="w-100 d-flex mt-2 justify-content-end">
+      <div class="pr-2">prev 1/1 next</div>
+    </div>
   </div>
 </div>
